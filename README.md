@@ -1,6 +1,6 @@
 # Pyscripts
 
-![](https://giphy.com/embed/3ohs7GMtGKZEsZ20OA)
+![](https://media.giphy.com/media/3ohs7GMtGKZEsZ20OA/giphy.gif)
 
 
 Install:
