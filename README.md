@@ -1,5 +1,8 @@
 # Pyscripts
 
+![](https://giphy.com/embed/3ohs7GMtGKZEsZ20OA)
+
+
 Install:
 - add these to .bashrc or .zshrc :
   ```
