@@ -1,0 +1,60 @@
+#!/usr/bin/env python3
+
+import fileinput
+import humanize
+
+
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        pass
+ 
+    try:
+        import unicodedata
+        unicodedata.numeric(s)
+        return True
+    except (TypeError, ValueError):
+        pass
+ 
+    return False
+
+
+
+
+
+
+
+totalSize = 0
+noOfFiles = 0
+
+lineNo = 0
+printedAllFiles = False
+filesHeaderPrinted = False
+for line in fileinput.input():
+    #print(line,end='')
+    if(lineNo <= 19):
+        # headers
+        print(line,end='')
+    else:
+
+        if(printedAllFiles == True):
+            # all files printed out 
+            # print final line
+            #print(line,end='')
+            date,time,size,compressed, *files = tuple(line.split())
+            print('{0:>9}{1:>9}          {2:>9}   {3:>9}        {4:>9}'.format(date,time,humanize.naturalsize(size,gnu=True),humanize.naturalsize(compressed,gnu=True),''.join(files)))
+            exit()
+        if(line.count("----------")>0):
+            print(line,end='')
+            printedAllFiles = True
+        else:
+            # main files
+            date,time,attr,size,compressed, *filename = tuple(line.split())
+            totalSize+=int(size)
+            noOfFiles +=1
+            #print('{0}'.format(''.join(filename if(is_number(compressed)) else compressed)))
+            print ('{0:>9}{1:>9} {2}    {3:>9}   {4:>9}   {5:>9}'.format(date, time,attr,humanize.naturalsize(size, gnu=True), (humanize.naturalsize(compressed, gnu=True) if(is_number(compressed)) else "0B") ,''.join(filename if(is_number(compressed)) else compressed)))
+
+    lineNo+=1

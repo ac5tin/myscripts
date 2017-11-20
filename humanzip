@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+
+import fileinput
+import humanize
+
+
+totalSize = 0
+noOfFiles = 0
+
+lineNo = 0
+nonFileLine = 0 #when this number reaches 4, all the files have been printed out
+for line in fileinput.input():
+
+    if(line.count(' ')>=3 and line.count('---------')==0 and lineNo >=2 and nonFileLine==3):
+        size, date, time, *filename = tuple(line.split())
+        totalSize+=int(size)
+        noOfFiles +=1
+        print ('{0:>9}  {1}  {2}  {3}'.format(humanize.naturalsize(size, gnu=True), date, time, ' '.join(filename)))
+    elif(nonFileLine==4):
+        # file size + files
+        size, number,files = tuple(line.split())
+        print('{0:>9}                     {1} files'.format(humanize.naturalsize(size,gnu=True),number))
+    else:
+        print(line,end='')
+        nonFileLine+=1
+    lineNo+=1
+
+#print('Total Size: {0} | Number of Files:{1}'.format(humanize.naturalsize(totalSize,gnu=True),noOfFiles))

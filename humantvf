@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+
+import fileinput
+import humanize
+
+
+totalSize = 0
+noOfFiles = 0
+for line in fileinput.input():
+    perm, owner, size, date, time, *filename = tuple(line.split())
+    totalSize+=int(size)
+    noOfFiles +=1
+    print ('{0} {1} {2:>9} {3} {4} {5}'.format(perm, owner, humanize.naturalsize(size, gnu=True), date, time, ' '.join(filename)))
+print('Total Size: {0} | Number of Files:{1}'.format(humanize.naturalsize(totalSize,gnu=True),noOfFiles))
