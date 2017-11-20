@@ -2,7 +2,8 @@
 
 Install:
 - add these to .bashrc or .zshrc :
-  ```alias humantvf="/path/to/humantvf"
+  ```
+  alias humantvf="/path/to/humantvf"
   alias humanzip="/path/to/humanzip"
   alias human7z="/path/to/human7z"
   ```
