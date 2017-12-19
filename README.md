@@ -9,6 +9,7 @@ Install:
   alias humantvf="/path/to/humantvf"
   alias humanzip="/path/to/humanzip"
   alias human7z="/path/to/human7z"
+  alias humanpixz="/path/to/humanpixz"
   ```
 
 Usage:
@@ -16,3 +17,4 @@ Usage:
 - zip: `unzip -l foo.zip|humanzip`
 - gz: `tar -ztvf foo.tar.gz|humantvf`
 - xz: `tar -Jtvf foo.tar.xz|humantvf`
+      `pixz -l foo.tar.xz|humanpixz`
